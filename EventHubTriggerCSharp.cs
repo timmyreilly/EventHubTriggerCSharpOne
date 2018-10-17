@@ -24,11 +24,7 @@ namespace Company.Function
                 log.LogInformation("GOT HERE");
                 dClient.CreateDatabaseIfNotExistsAsync(new Database() { Id = "Challenge7" }).GetAwaiter().GetResult();
 
-                dClient.CreateDocumentCollectionIfNotExistsAsync(
-                UriFactory.CreateDatabaseUri("Challenge7"),
-                new DocumentCollection { Id = "BUYBUYBUY" }).
-                GetAwaiter()
-                .GetResult();
+                dClient.CreateDocumentCollectionIfNotExistsAsync( UriFactory.CreateDatabaseUri("Challenge7"), new DocumentCollection { Id = "BUYBUYBUY" }).GetAwaiter().GetResult();
 
                 // var rating = cosmosService.CreateRating(data);
                 foreach (var message in myEventHubMessages)
