@@ -145,3 +145,11 @@ namespace Company.Function
 
 Not sure it's the best way to to do it, but it works. 
 
+Important TidBit: https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-event-processor-host#checkpointing
+
+```
+The storage account used for checkpointing probably would not handle this load, but more importantly checkpointing every single event is indicative of a queued messaging pattern for which a Service Bus queue might be a better option than an event hub. The idea behind Event Hubs is that you get "at least once" delivery at great scale. By making your downstream systems idempotent, it is easy to recover from failures or restarts that result in the same events being received multiple times.
+
+```
+
+So if we're dropping into Cosmos... we need to make sure our append method for our array of events is handled differently. It needs to place the info the queue if it doesn't already exist, or we need some way of removing duplicates on the way in... or later? Or what are the consequences of multiple events in the same document? 
