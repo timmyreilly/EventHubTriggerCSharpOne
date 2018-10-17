@@ -14,11 +14,6 @@ namespace Company.Function
         public static void Run([EventHubTrigger("bighub", Connection = "EventHub")]JObject[] myEventHubMessages, ILogger log)
         {
             log.LogInformation("WAAAA HERE WE GO!");
-            foreach (var myEventHubMessage in myEventHubMessages)
-            {
-                log.LogInformation($"One Of them: {myEventHubMessage}");
-            }
-
 
             var cosmosEndpointUri = new Uri(Environment.GetEnvironmentVariable("CosmosEndpoint", EnvironmentVariableTarget.Process));
             var cosmosKey = Environment.GetEnvironmentVariable("CosmosKey", EnvironmentVariableTarget.Process);
@@ -38,6 +33,8 @@ namespace Company.Function
                 // var rating = cosmosService.CreateRating(data);
                 foreach (var message in myEventHubMessages)
                 {
+                    log.LogInformation($"One Of them: {message}");
+
                     dClient.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("Challenge7", "BUYBUYBUY"), message).GetAwaiter().GetResult();
                 }
 
