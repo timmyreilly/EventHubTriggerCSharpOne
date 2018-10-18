@@ -15,7 +15,7 @@ namespace Company.Function
         private static DocumentClient dClient => lazyClient.Value;
 
         [FunctionName("EventHubTriggerCSharp")]
-        public static void Run([EventHubTrigger("bighub", Connection = "EventHub")]JObject[] myEventHubMessages, ILogger log)
+        public static void Run([EventHubTrigger("bighub", Connection = "EventHub"), Disable()]JObject[] myEventHubMessages, ILogger log)
         {
             // log.LogInformation("WAAAA HERE WE GO!");
 
