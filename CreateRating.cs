@@ -66,7 +66,7 @@ namespace Company.Function
                 sentiment = double.Parse((string)documentScore.score);
                 if (sentiment < .3)
                 {
-                    log.LogWarning($"{sentiment} is below threshold");
+                    log.LogWarning($"{sentiment} is below threshold go check on this productid: {data.productId}");
                 }
             }
 

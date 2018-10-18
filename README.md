@@ -153,3 +153,15 @@ The storage account used for checkpointing probably would not handle this load, 
 ```
 
 So if we're dropping into Cosmos... we need to make sure our append method for our array of events is handled differently. It needs to place the info the queue if it doesn't already exist, or we need some way of removing duplicates on the way in... or later? Or what are the consequences of multiple events in the same document? 
+
+
+Some Queries:
+
+```
+traces 
+| where customDimensions.LogLevel == "Warning"
+```
+
+```
+
+```
