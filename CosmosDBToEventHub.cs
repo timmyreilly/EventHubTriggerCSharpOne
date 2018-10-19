@@ -12,8 +12,9 @@ namespace Company.Function
         public static void Run([CosmosDBTrigger(
             databaseName: "Challenge7",
             collectionName: "POSData",
-            ConnectionStringSetting = "AccountEndpoint=https://kosmos-staging.documents.azure.com:443/;AccountKey=6vLRnng70XqmIShdWwjDYT7SYccxAxwI9ds04DAqySA74afW4b4YMdjJlqIyxPQM4ON3Rocd1bSJj6r9g2r1hw==;",
-            LeaseCollectionName = "leases")]IReadOnlyList<Document> input, ILogger log)
+            ConnectionStringSetting = "CosmosConnection",
+            LeaseCollectionName = "leases",
+            CreateLeaseCollectionIfNotExists = true)]IReadOnlyList<Document> input, ILogger log)
         {
             if (input != null && input.Count > 0)
             {

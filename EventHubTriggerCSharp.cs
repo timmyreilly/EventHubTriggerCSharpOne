@@ -28,7 +28,7 @@ namespace Company.Function
 
             foreach (var message in myEventHubMessages)
             {
-                log.LogInformation($"One Of them: {message}");
+                // log.LogInformation($"One Of them: {message}");
 
                 dClient.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("Challenge7", "POSData"), message).GetAwaiter().GetResult();
             }
