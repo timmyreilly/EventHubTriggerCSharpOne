@@ -1,0 +1,21 @@
+### 
+
+POST http://localhost:7071/api/CreateRating/
+content-type: application/json
+
+{
+    name : "tim",
+    userNotes: "This tastes bad"
+}
+
+###
+
+POST https://eventhubfuncy.azurewebsites.net/api/CreateRating/
+content-type: application/json
+
+{
+    name : "tim",
+    userNotes: "This tastes bad"
+}
+
+###
